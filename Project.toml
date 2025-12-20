@@ -1,0 +1,13 @@
+name = "AtmosphericExtinction"
+uuid = "fae9e5b2-af3b-4f55-8d7e-b4c0083dc7a6"
+authors = ["Stefano Covino <stefano.covino@inaf.it> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.12"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
