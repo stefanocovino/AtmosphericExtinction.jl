@@ -44,7 +44,7 @@ ReadData("Paranal.dat")
 ```
 """
 function ReadData(fname)
-    extpath = joinpath("data",fname)
+    extpath = joinpath(@__DIR__,"..","data",fname)
     if fname == "Paranal.dat"
         extdata = CSV.File(extpath; comment="#",header=["λ", "Ext", "eExt"])
     else
