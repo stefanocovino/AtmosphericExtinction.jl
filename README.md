@@ -53,3 +53,10 @@ Recipes["La Silla"](3500:4000)
 Wavelength should be expressed in Angstrom.
 
 
+### Available recipes
+
+This is a plot showing the recipes at present available:
+
+![Histogram](recipes.png)
+
+
