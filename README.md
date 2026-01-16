@@ -57,6 +57,6 @@ Wavelength should be expressed in Angstrom.
 
 This is a plot showing the recipes at present available:
 
-![Histogram](recipes.png)
+![Histogram](docs/src/recipes.png)
 
 
