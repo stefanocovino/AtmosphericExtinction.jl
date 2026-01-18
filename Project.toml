@@ -6,6 +6,7 @@ authors = ["Stefano Covino <stefano.covino@inaf.it> and contributors"]
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 UnitfulAstro = "6112ee07-acf9-5e0f-b108-d242c714bf9f"
@@ -13,6 +14,7 @@ UnitfulAstro = "6112ee07-acf9-5e0f-b108-d242c714bf9f"
 [compat]
 CSV = "0.10.15"
 DataFrames = "1.8.1"
+DelimitedFiles = "1.9.1"
 Interpolations = "0.16.2"
 Unitful = "1.27.0"
 UnitfulAstro = "1.2.2"

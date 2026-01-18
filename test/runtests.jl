@@ -17,4 +17,16 @@ using Test
     # Mauna Kea
     @test Recipes["Mauna Kea"](3500:3502) == [0.44, 0.4393, 0.4386]
     #
+    # Apache Point
+    @test Recipes["Apache Point"](3500:3502) == [0.540046, 0.5389448, 0.5378436]
+    #
+    # Cerro Tololo
+    @test Recipes["Cerro Tololo"](3500:3502) == [0.62, 0.6192957746478873, 0.6185915492957746]
+    #
+    # Kitt Peak
+    @test Recipes["Kitt Peak"](3500:3502) == [0.6, 0.5993802816901408, 0.5987605633802817]
+    #
+    # Lick
+    @test Recipes["Lick"](3500:3502) == [0.665, 0.6643239436619719, 0.66364788732394387]
+    #
 end
