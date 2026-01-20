@@ -60,9 +60,6 @@ end
 apachetbl = ReadData("Apache.dat")
 apachefnt = linear_interpolation(apachetbl[!,:λ], apachetbl[!,:Ext], extrapolation_bc = NaN)
 
-pachontbl = ReadData("CerroPachon.dat")
-pachonfnt = linear_interpolation(pachontbl[!,:λ], pachontbl[!,:Ext], extrapolation_bc = NaN)
-
 kitttbl = ReadData("KittPeak.dat")
 kittfnt = linear_interpolation(kitttbl[!,:λ], kitttbl[!,:Ext], extrapolation_bc = NaN)
 
@@ -85,7 +82,7 @@ tololotbl = ReadData("CerroTololo.dat")
 tololofnt = linear_interpolation(tololotbl[!,:λ], tololotbl[!,:Ext], extrapolation_bc = NaN)
 
 
-Recipes = Dict("Apache Point"=>apachefnt,"Cerro Pachon"=>pachonfnt,"Cerro Paranal"=>paranalfnt, "Cerro Tololo"=>tololofnt, "Kitt Peak"=>kittfnt, "La Palma"=>lapalmafnt, "La Silla"=>lasillafnt, "Lick"=>lickfnt, "Mauna Kea"=>maunakeafnt)
+Recipes = Dict("Apache Point"=>apachefnt,"Cerro Paranal"=>paranalfnt, "Cerro Tololo"=>tololofnt, "Kitt Peak"=>kittfnt, "La Palma"=>lapalmafnt, "La Silla"=>lasillafnt, "Lick"=>lickfnt, "Mauna Kea"=>maunakeafnt)
 
 
 
