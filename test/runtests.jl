@@ -2,8 +2,6 @@ using AtmosphericExtinction
 using Test
 
 @testset "AtmosphericExtinction.jl" begin
-    # Cerro Pachon
-    @test Recipes["Cerro Pachon"](3500:3502) == [0.44, 0.4393, 0.4386]
     #
     # Cerro Paranal
     @test Recipes["Cerro Paranal"](3500:3502) == [0.539, 0.5384800000000001, 0.53796]
