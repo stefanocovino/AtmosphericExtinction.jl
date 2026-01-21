@@ -29,6 +29,12 @@ will install this package, with the latter when the package (if ever) will be re
 
 ## Possible use
 
+```julia
+using AtmosphericExtinction
+using Unitful
+```
+
+
 A list of the known site can be obtained by:
 
 ```julia
@@ -50,10 +56,11 @@ We plan to add as many site information as possible in the future.
 The extinction (magnitude/airmass) for any given available observing site, e.g. La Silla, can be obtained by:
 
 ```julia
-Recipes["La Silla"](3500:4000)
+Recipes["La Silla"](3500*u"angstrom":1*u"angstrom":4000*u"angstrom")
 ```
 
-Wavelength should be expressed in Angstrom.
+Extrapolations from the intput table wavelength limits throws an error.
+
 
 
 This is a plot showing the recipes at present available:
@@ -63,7 +70,7 @@ This is a plot showing the recipes at present available:
 
 ### References
 
-These are the references for the availbale atmoshperic extinction tables, partly derived from data included in the [specreduce](https://specreduce.readthedocs.io/en/latest/index.html) `python` packge.
+These are the references for the availbale atmoshperic extinction tables, partly derived from data included in the [specreduce](https://specreduce.readthedocs.io/en/latest/index.html) `python` package.
 
 - The extinction table for the *Apache Point Observatory* is based on the extinction table used for the [SDSS](https://www.apo.nmsu.edu/arc35m/Instruments/DIS/).
 - The extinction table for the Cerro Paranal is taken from [Patat et al. (2011)](https://ui.adsabs.harvard.edu/abs/2011A%26A...527A..91P/abstract). This is the only case where the uncertainties on the extinction are reported.
@@ -75,5 +82,5 @@ These are the references for the availbale atmoshperic extinction tables, partly
 - The extinction curve for the Manua Kea is taken from [Buton et al. (2013](https://mthamilton.ucolick.org/techdocs/standards/lick_mean_extinct.html).
 
 
-We are glad to include more extinction tables, if availbale.
+We are glad to include more extinction tables, if available.
 

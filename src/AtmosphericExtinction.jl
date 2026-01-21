@@ -58,28 +58,36 @@ end
 
 
 apachetbl = ReadData("Apache.dat")
-apachefnt = linear_interpolation(apachetbl[!,:λ], apachetbl[!,:Ext], extrapolation_bc = NaN)
+apachetbl.λ .= apachetbl.λ.*u"angstrom"
+apachefnt = linear_interpolation(apachetbl[!,:λ], apachetbl[!,:Ext])
 
 kitttbl = ReadData("KittPeak.dat")
-kittfnt = linear_interpolation(kitttbl[!,:λ], kitttbl[!,:Ext], extrapolation_bc = NaN)
+kitttbl.λ .= kitttbl.λ.*u"angstrom"
+kittfnt = linear_interpolation(kitttbl[!,:λ], kitttbl[!,:Ext])
 
 lapalmatbl = ReadData("LaPalma.dat")
-lapalmafnt = linear_interpolation(lapalmatbl[!,:λ], lapalmatbl[!,:Ext], extrapolation_bc = NaN)
+lapalmatbl.λ .= lapalmatbl.λ.*u"angstrom"
+lapalmafnt = linear_interpolation(lapalmatbl[!,:λ], lapalmatbl[!,:Ext])
 
 lasillatbl = ReadData("LaSilla.dat")
-lasillafnt = linear_interpolation(lasillatbl[!,:λ], lasillatbl[!,:Ext], extrapolation_bc = NaN)
+lasillatbl.λ .= lasillatbl.λ.*u"angstrom"
+lasillafnt = linear_interpolation(lasillatbl[!,:λ], lasillatbl[!,:Ext])
 
 licktbl = ReadData("Lick.dat")
-lickfnt = linear_interpolation(licktbl[!,:λ], licktbl[!,:Ext], extrapolation_bc = NaN)
+licktbl.λ .= licktbl.λ.*u"angstrom"
+lickfnt = linear_interpolation(licktbl[!,:λ], licktbl[!,:Ext])
 
 maunakeatbl = ReadData("MaunaKea.dat")
-maunakeafnt = linear_interpolation(maunakeatbl[!,:λ], maunakeatbl[!,:Ext], extrapolation_bc = NaN)
+maunakeatbl.λ .= maunakeatbl.λ.*u"angstrom"
+maunakeafnt = linear_interpolation(maunakeatbl[!,:λ], maunakeatbl[!,:Ext])
 
 paranaltbl = ReadData("Paranal.dat")
-paranalfnt = linear_interpolation(paranaltbl[!,:λ], paranaltbl[!,:Ext], extrapolation_bc = NaN)
+paranaltbl.λ .= paranaltbl.λ.*u"angstrom"
+paranalfnt = linear_interpolation(paranaltbl[!,:λ], paranaltbl[!,:Ext])
 
 tololotbl = ReadData("CerroTololo.dat")
-tololofnt = linear_interpolation(tololotbl[!,:λ], tololotbl[!,:Ext], extrapolation_bc = NaN)
+tololotbl.λ .= tololotbl.λ.*u"angstrom"
+tololofnt = linear_interpolation(tololotbl[!,:λ], tololotbl[!,:Ext])
 
 
 Recipes = Dict("Apache Point"=>apachefnt,"Cerro Paranal"=>paranalfnt, "Cerro Tololo"=>tololofnt, "Kitt Peak"=>kittfnt, "La Palma"=>lapalmafnt, "La Silla"=>lasillafnt, "Lick"=>lickfnt, "Mauna Kea"=>maunakeafnt)
