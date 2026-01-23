@@ -56,10 +56,50 @@ We plan to add as many site information as possible in the future.
 The extinction (magnitude/airmass) for any given available observing site, e.g. La Silla, can be obtained by:
 
 ```julia
-Recipes["La Silla"](3500*u"angstrom":1*u"angstrom":4000*u"angstrom")
+using Unitful
+
+Recipes["La Silla"].table(3500*u"angstrom":1*u"angstrom":4000*u"angstrom")
 ```
+```
+501-element Vector{Float64}:
+ 0.52
+ 0.5194000000000001
+ 0.5188
+ 0.5182
+ 0.5176
+ 0.517
+ 0.5164
+ 0.5158
+ 0.5152000000000001
+ 0.5146000000000001
+ 0.514
+ ⋮
+ 0.3027
+ 0.3024
+ 0.30210000000000004
+ 0.3018
+ 0.3015
+ 0.30119999999999997
+ 0.3009
+ 0.3006
+ 0.3003
+ 0.3
+ ```
+
+While the limits in wavelength for a given atmospheric extinction can be read by:
+
+```julia
 
 Extrapolations from the intput table wavelength limits throws an error.
+Recipes["La Silla"].lims
+```
+```
+2-element Vector{Quantity{Float64, 𝐋, Unitful.FreeUnits{(Å,), 𝐋, nothing}}}:
+ 3100.0 Å
+ 9000.0 Å
+ ```
+
+Extrapolation beyond these limits is allowed following a `flat` strategy, i.e., the last value on the lowest and highest wavelnegth value is adopted. This might or might not be acceptable, depending on the specific problem you are addressing.
 
 
 
