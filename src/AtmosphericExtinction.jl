@@ -4,6 +4,7 @@ module AtmosphericExtinction
 using DataFrames
 using DelimitedFiles
 using Interpolations
+using Measurements
 using Unitful
 
 
@@ -112,7 +113,9 @@ maunakea = RecipeData(maunakeafnt,[minimum(maunakeatbl.λ),maximum(maunakeatbl.�
 
 paranaltbl = ReadData("Paranal.dat")
 paranaltbl.λ .= paranaltbl.λ.*u"angstrom"
-paranalfnt = linear_interpolation(paranaltbl[!,:λ], paranaltbl[!,:Ext], extrapolation_bc=Flat())
+#paranalfnt = linear_interpolation(paranaltbl[!,:λ], paranaltbl[!,:Ext], extrapolation_bc=Flat())
+paranalfull = measurement.(paranaltbl[!,:Ext],paranaltbl[!,:eExt])
+paranalfnt = linear_interpolation(paranaltbl[!,:λ], paranalfull, extrapolation_bc=Flat())
 
 paranal = RecipeData(paranalfnt,[minimum(paranaltbl.λ),maximum(paranaltbl.λ)])
 

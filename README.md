@@ -102,6 +102,47 @@ Recipes["La Silla"].lims
 Extrapolation beyond these limits is allowed following a `flat` strategy, i.e., the last value on the lowest and highest wavelnegth value is adopted. This might or might not be acceptable, depending on the specific problem you are addressing.
 
 
+As mentioned above, `Cerro Paranal` data provide ucertainties too, e.g.:
+
+```julia
+using Unitful
+
+Recipes["Cerro Paranal"].table(3500*u"angstrom":1*u"angstrom":4000*u"angstrom")
+```
+```
+501-element Vector{Measurement{Float64}}:
+  0.539 ± 0.0046
+ 0.5385 ± 0.0046
+  0.538 ± 0.0046
+ 0.5374 ± 0.0046
+ 0.5369 ± 0.0046
+ 0.5364 ± 0.0046
+ 0.5359 ± 0.0046
+ 0.5354 ± 0.0046
+ 0.5348 ± 0.0046
+ 0.5343 ± 0.0047
+ 0.5338 ± 0.0047
+        ⋮
+ 0.3402 ± 0.003
+ 0.3399 ± 0.003
+ 0.3396 ± 0.0029
+ 0.3393 ± 0.0029
+  0.339 ± 0.0029
+ 0.3387 ± 0.0029
+ 0.3384 ± 0.0028
+ 0.3381 ± 0.0028
+ 0.3378 ± 0.0028
+ 0.3375 ± 0.0028
+ ```
+
+Data for the extinction only are easily derivable by:
+
+```julia
+using Measurements
+
+Measurements.value.(Recipes["Cerro Paranal"].table(3500*u"angstrom":1*u"angstrom":4000*u"angstrom"))
+```
+
 
 This is a plot showing the recipes at present available:
 

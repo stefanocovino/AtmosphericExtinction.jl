@@ -1,4 +1,5 @@
 using AtmosphericExtinction
+using Measurements
 using Test
 using Unitful
 
@@ -7,7 +8,7 @@ using Unitful
     wlrng = 3500*u"angstrom":1*u"angstrom":3502*u"angstrom"
     #
     # Cerro Paranal
-    @test Recipes["Cerro Paranal"].table(wlrng) == [0.539, 0.5384800000000001, 0.53796]
+    @test Measurements.value.(Recipes["Cerro Paranal"].table(wlrng)) == [0.539, 0.5384800000000001, 0.53796]
     #
     # La Palma
     @test Recipes["La Palma"].table(wlrng) == [0.5146, 0.513968, 0.5133359999999999]
