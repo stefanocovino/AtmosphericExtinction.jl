@@ -61,36 +61,41 @@ using Unitful
 Recipes["La Silla"].table(3500*u"angstrom":1*u"angstrom":4000*u"angstrom")
 ```
 ```
-501-element Vector{Float64}:
- 0.52
- 0.5194000000000001
- 0.5188
- 0.5182
- 0.5176
- 0.517
- 0.5164
- 0.5158
- 0.5152000000000001
- 0.5146000000000001
- 0.514
- ⋮
- 0.3027
- 0.3024
- 0.30210000000000004
- 0.3018
- 0.3015
- 0.30119999999999997
- 0.3009
- 0.3006
- 0.3003
- 0.3
+501-element Vector{Measurements.Measurement{Float64}}:
+                0.52 ± 0.0
+  0.5194000000000001 ± 0.0
+              0.5188 ± 0.0
+              0.5182 ± 0.0
+              0.5176 ± 0.0
+               0.517 ± 0.0
+              0.5164 ± 0.0
+              0.5158 ± 0.0
+  0.5152000000000001 ± 0.0
+  0.5146000000000001 ± 0.0
+               0.514 ± 0.0
+  0.5134000000000001 ± 0.0
+              0.5128 ± 0.0
+              0.5122 ± 0.0
+                     ⋮
+              0.3039 ± 0.0
+ 0.30360000000000004 ± 0.0
+              0.3033 ± 0.0
+               0.303 ± 0.0
+              0.3027 ± 0.0
+              0.3024 ± 0.0
+ 0.30210000000000004 ± 0.0
+              0.3018 ± 0.0
+              0.3015 ± 0.0
+ 0.30119999999999997 ± 0.0
+              0.3009 ± 0.0
+              0.3006 ± 0.0
+              0.3003 ± 0.0
+                 0.3 ± 0.0
  ```
 
-While the limits in wavelength for a given atmospheric extinction can be read by:
+While limits in wavelength for a given atmospheric extinction can be read by:
 
 ```julia
-
-Extrapolations from the intput table wavelength limits throws an error.
 Recipes["La Silla"].lims
 ```
 ```
@@ -102,7 +107,7 @@ Recipes["La Silla"].lims
 Extrapolation beyond these limits is allowed following a `flat` strategy, i.e., the last value on the lowest and highest wavelnegth value is adopted. This might or might not be acceptable, depending on the specific problem you are addressing.
 
 
-As mentioned above, `Cerro Paranal` data provide ucertainties too, e.g.:
+As mentioned above, at present only `Cerro Paranal` data provide ucertainties, e.g.:
 
 ```julia
 using Unitful
@@ -135,14 +140,60 @@ Recipes["Cerro Paranal"].table(3500*u"angstrom":1*u"angstrom":4000*u"angstrom")
  0.3375 ± 0.0028
  ```
 
-Data for the extinction only are easily derivable by:
+
+## Convenience functions
+
+For an easier handling of the extinction data, we have provided a few convenience functions to extract the extinction data in a wavelength range or the wavelength limits for a given site. No unitsa are needed given that the wavelengths are in Angstrom. E.g.:
 
 ```julia
-using Measurements
-
-Measurements.value.(Recipes["Cerro Paranal"].table(3500*u"angstrom":1*u"angstrom":4000*u"angstrom"))
+ExtinctionValues("Cerro Paranal",3500:4000)
+```
+```
+501-element Vector{Float64}:
+ 0.539
+ 0.5384800000000001
+ 0.53796
+ 0.53744
+ 0.5369200000000001
+ 0.5364
+ 0.53588
+ 0.5353600000000001
+ 0.53484
+ 0.53432
+ 0.5338
+ 0.53328
+ 0.53276
+ 0.53224
+ ⋮
+ 0.3414
+ 0.34109999999999996
+ 0.3408
+ 0.34049999999999997
+ 0.34019999999999995
+ 0.3399
+ 0.3396
+ 0.3393
+ 0.33899999999999997
+ 0.3387
+ 0.33840000000000003
+ 0.3381
+ 0.3378
+ 0.3375
 ```
 
+or:
+
+```julia
+ExtinctionLimits("Cerro Paranal")
+```
+```
+2-element Vector{Float64}:
+  3325.0
+ 10000.0
+```
+
+
+### Available recipe plot
 
 This is a plot showing the recipes at present available:
 
