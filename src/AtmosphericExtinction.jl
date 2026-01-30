@@ -84,6 +84,22 @@ end
 
 
 """
+Mag2Lin(excnt)
+
+Returns the extinction values in linear units
+
+
+# Examples
+```julia
+Mag2Lin([0.5,0.4,0.3])
+```
+"""
+function Mag2Lin(extcnt)
+    return 10 .^ (-0.4 .* (extcnt))
+end
+
+
+"""
 ReadData(fname)
 
 Returns data for an atmospheric extinction currently supported by the package.
