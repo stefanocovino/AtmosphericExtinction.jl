@@ -32,6 +32,6 @@ using Unitful
     @test isapprox(Measurements.value.(Recipes["Lick"].table(wlrng)),[0.665, 0.6643239436619719, 0.66364788732394387],rtol=1e-4)
     #
     # Mag2Lin
-    @test isapprox(Mag2Lin([0.6,0.5,0.4]),[0.5754399, 0.630957, 0.69183097],rtol=1e-4)
+    @test isapprox(AtmosphericExtinction.Mag2Lin([0.6,0.5,0.4]),[0.5754399, 0.630957, 0.69183097],rtol=1e-4)
     #
 end

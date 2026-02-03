@@ -148,49 +148,39 @@ For an easier handling of the extinction data, we have provided a few convenienc
 ```julia
 ExtinctionValues("Cerro Paranal",3500:4000)
 ```
-```
-501-element Vector{Float64}:
- 0.539
- 0.5384800000000001
- 0.53796
- 0.53744
- 0.5369200000000001
- 0.5364
- 0.53588
- 0.5353600000000001
- 0.53484
- 0.53432
- 0.5338
- 0.53328
- 0.53276
- 0.53224
- ⋮
- 0.3414
- 0.34109999999999996
- 0.3408
- 0.34049999999999997
- 0.34019999999999995
- 0.3399
- 0.3396
- 0.3393
- 0.33899999999999997
- 0.3387
- 0.33840000000000003
- 0.3381
- 0.3378
- 0.3375
-```
+
 
 or:
 
 ```julia
 ExtinctionLimits("Cerro Paranal")
 ```
+
+There are also two function to directly correct and input spectrum, in limear units, for atmospheric extinction or to apply extinction to a theoretical spectrum. E.g.:
+
+```julia
+inputspectrum = dataflux
+einputspectrum = edataflux
+inputwave = datawave
+aitmass = 1.3
+
+outputspectrum = DeExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
+'''
+
+or, viceversa, if the input spectrum is already free of extinction:
+
+```julia
+outputspectrum = ExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
 ```
-2-element Vector{Float64}:
-  3325.0
- 10000.0
-```
+
+
+For example, in the following plot we have a spectrum (no sort of cleaning applied) obtained by the blue arm of the [ESO X-shooter](https://www.eso.org/sci/facilities/paranal/instruments/xshooter.html) instrument with aormass `\sim 1.25` from the [Cerro Paranal](https://en.wikipedia.org/wiki/Cerro_Paranal).
+
+![Histogram](docs/src/extinction.png.png)
+
+
+The spectrum shown in the plot, with a proper cleaning and processing, was published and analyed in [Urata et al. (2023)](https://ui.adsabs.harvard.edu/abs/2023NatAs...7...80U/abstract).
+
 
 
 ### Available recipe plot

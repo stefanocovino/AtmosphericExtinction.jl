@@ -9,10 +9,67 @@ using Unitful
 
 
 
+
+export DeExtinctSpectrum
 export ExtinctionLimits
 export ExtinctionValues
+export ExtinctSpectrum
 export GetKnownRecipes
 export Recipes
+
+
+
+
+
+
+
+
+"""
+DeExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
+
+Returns the input spectrum (in linear units) correcteced for atmospheric extinction.
+
+
+"""
+
+function DeExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
+	if haskey(Recipes,recipe)
+		if all(unit.(iwave) .== NoUnits)
+			exttbl = airmass .* Recipes[recipe].table(iwave*u"angstrom")
+		else
+			uconvert.(u"angstrom",iwave)
+			exttbl = airmass .* Recipes[recipe].table(iwave)
+		end
+		extlin = AtmosphericExtinction.Mag2Lin(exttbl)
+		spectrum = measurement.(ispec,ierrspec)
+		return spectrum ./ extlin
+	else
+		return nothing
+	end
+end
+
+
+
+
+"""
+ExtinctionLimits(recipe)
+
+Returns the extinction values wavelength limits in Angstrom.
+
+
+# Examples
+```julia
+ExtinctionLimits("Paranal.dat")
+```
+"""
+function ExtinctionLimits(recipe)
+    if haskey(Recipes,recipe)
+        data = Recipes[recipe].lims
+        return ustrip.(data)
+    else
+        return nothing
+    end
+end
 
 
 
@@ -39,26 +96,29 @@ end
 
 
 
+
 """
-ExtinctionLimits(recipe)
+ExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
 
-Returns the extinction values wavelength limits in Angstrom.
+Returns the input spectrum (in linear units) after atmospheric extinction.
 
 
-# Examples
-```julia
-ExtinctionLimits("Paranal.dat")
-```
 """
-function ExtinctionLimits(recipe)
-    if haskey(Recipes,recipe)
-        data = Recipes[recipe].lims
-        return ustrip.(data)
-    else
-        return nothing
-    end
+function ExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
+	if haskey(Recipes,recipe)
+		if all(unit.(iwave) .== NoUnits)
+			exttbl = airmass .* Recipes[recipe].table(iwave*u"angstrom")
+		else
+			uconvert.(u"angstrom",iwave)
+			exttbl = airmass .* Recipes[recipe].table(iwave)
+		end
+		extlin = AtmosphericExtinction.Mag2Lin(exttbl)
+		spectrum = measurement.(ispec,ierrspec)
+		return spectrum .* extlin
+	else
+		return nothing
+	end
 end
-
 
 
 
@@ -97,6 +157,10 @@ Mag2Lin([0.5,0.4,0.3])
 function Mag2Lin(extcnt)
     return 10 .^ (-0.4 .* (extcnt))
 end
+
+
+
+
 
 
 """
