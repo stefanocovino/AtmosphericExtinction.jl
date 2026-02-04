@@ -34,4 +34,14 @@ using Unitful
     # Mag2Lin
     @test isapprox(AtmosphericExtinction.Mag2Lin([0.6,0.5,0.4]),[0.5754399, 0.630957, 0.69183097],rtol=1e-4)
     #
+    # DeExtincSpectrum and ExtinctSpectrum
+    waverng = 3500.:3502.
+	inpspc = (waverng/5000).^-1
+	einpspc = inpspc/10
+	res = DeExtinctSpectrum("La Silla",waverng,inpspc,einpspc,1.25)
+	@test isapprox(Measurements.value.(res),[2.59957,2.59704,2.5945],rtol=1e-4)
+	#
+	dres = ExtinctSpectrum("La Silla",waverng,Measurements.value.(res),Measurements.uncertainty.(res),1.25)
+	@test isapprox(Measurements.value.(dres),inpspc,rtol=1e-4)
+    #
 end

@@ -165,7 +165,7 @@ inputwave = datawave
 aitmass = 1.3
 
 outputspectrum = DeExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
-'''
+```
 
 or, viceversa, if the input spectrum is already free of extinction:
 
@@ -174,9 +174,9 @@ outputspectrum = ExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass
 ```
 
 
-For example, in the following plot we have a spectrum (no sort of cleaning applied) obtained by the blue arm of the [ESO X-shooter](https://www.eso.org/sci/facilities/paranal/instruments/xshooter.html) instrument with aormass `\sim 1.25` from the [Cerro Paranal](https://en.wikipedia.org/wiki/Cerro_Paranal).
+For example, in the following plot we have a spectrum (no sort of cleaning applied) obtained by the blue arm of the [ESO X-shooter](https://www.eso.org/sci/facilities/paranal/instruments/xshooter.html) instrument with aormass ``\sim 1.25`` from the [Cerro Paranal](https://en.wikipedia.org/wiki/Cerro_Paranal).
 
-![Histogram](docs/src/extinction.png.png)
+![Extinction](docs/src/extinction.png)
 
 
 The spectrum shown in the plot, with a proper cleaning and processing, was published and analyed in [Urata et al. (2023)](https://ui.adsabs.harvard.edu/abs/2023NatAs...7...80U/abstract).
