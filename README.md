@@ -156,30 +156,27 @@ or:
 ExtinctionLimits("Cerro Paranal")
 ```
 
-There are also two function to directly correct and input spectrum, in limear units, for atmospheric extinction or to apply extinction to a theoretical spectrum. E.g.:
+There are also two function to directly correct and input spectrum, in limear units, for atmospheric extinction or to apply extinction to a theoretical spectrum. E.g., 'dataflux', 'edataflux' and 'datawave' are the input spctrum, the errors and the wavelelngth, respectively:
 
 ```julia
-inputspectrum = dataflux
-einputspectrum = edataflux
-inputwave = datawave
-aitmass = 1.3
+airmass = 1.3
 
 outputspectrum = DeExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
 ```
 
-or, viceversa, if the input spectrum is already free of extinction:
+or, viceversa, if the input spectrum is already free of extinction and one wants to simulate how it wuld appear observed at a given airmass:
 
 ```julia
 outputspectrum = ExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
 ```
 
 
-For example, in the following plot we have a spectrum (no sort of cleaning applied) obtained by the blue arm of the [ESO X-shooter](https://www.eso.org/sci/facilities/paranal/instruments/xshooter.html) instrument with aormass ``\sim 1.25`` from the [Cerro Paranal](https://en.wikipedia.org/wiki/Cerro_Paranal).
+For example, in the following plot we have a spectrum (no sort of cleaning applied) obtained by the blue arm of the [ESO X-shooter](https://www.eso.org/sci/facilities/paranal/instruments/xshooter.html) instrument with airmass ~1.25 from the [Cerro Paranal](https://en.wikipedia.org/wiki/Cerro_Paranal):
 
 ![Extinction](docs/src/extinction.png)
 
 
-The spectrum shown in the plot, with a proper cleaning and processing, was published and analyed in [Urata et al. (2023)](https://ui.adsabs.harvard.edu/abs/2023NatAs...7...80U/abstract).
+The spectrum shown in the plot, after a proper cleaning and processing, was published and analyed in [Urata et al. (2023)](https://ui.adsabs.harvard.edu/abs/2023NatAs...7...80U/abstract).
 
 
 

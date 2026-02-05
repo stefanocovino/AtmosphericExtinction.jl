@@ -27,6 +27,15 @@ export Recipes
 """
 DeExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
 
+#Arguments
+
+- `recipe` is one of the extinction tables available in the package (i.e., those reported by `GetKnownRecipes()`).
+- `iwave` is the vector of input wavelengths. They can have units (or assumed to be Angstrom).
+- `ispec` is the vector of the input spectrum, in linear units.
+- `ierrspec` is the vector of the uncertainties associated to the input spectrum. It cna well be a vector of zeros.
+- `airmass` is the airmass associated to the observation.
+
+
 Returns the input spectrum (in linear units) correcteced for atmospheric extinction.
 
 
@@ -54,6 +63,10 @@ end
 """
 ExtinctionLimits(recipe)
 
+#Arguments
+
+- `recipe` is one of the extcintion tables available in the package (i.e., those reported by `GetKnownRecipes()`).
+
 Returns the extinction values wavelength limits in Angstrom.
 
 
@@ -76,6 +89,13 @@ end
 
 """
 ExtinctionValues(recipe,waverange)
+
+
+#Arguments
+
+- `recipe` is one of the extinction tables available in the package (i.e., those reported by `GetKnownRecipes()`).
+- `waverange` is a vector of the wavelengths of interest (in Angstrom).
+
 
 Returns the extinction values for a given wavelength range in Angstrom.
 
@@ -100,8 +120,16 @@ end
 """
 ExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
 
-Returns the input spectrum (in linear units) after atmospheric extinction.
+#Arguments
 
+- `recipe` is one of the extinction tables available in the package (i.e., those reported by `GetKnownRecipes()`).
+- `iwave` is the vector of input wavelengths. They can have units (or assumed to be Angstrom).
+- `ispec` is the vector of the input spectrum, in linear units.
+- `ierrspec` is the vector of the uncertainties associated to the input spectrum. It cna well be a vector of zeros.
+- `airmass` is the airmass associated to the observation.
+
+
+Returns the input spectrum (in linear units) after atmospheric extinction.
 
 """
 function ExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
@@ -146,12 +174,21 @@ end
 """
 Mag2Lin(excnt)
 
+#Arguments
+
+- `extcnt` is a vector with extinction values in magnitudes (per airmass, usually).
+
+
 Returns the extinction values in linear units
 
 
 # Examples
 ```julia
 Mag2Lin([0.5,0.4,0.3])
+3-element Vector{Float64}:
+ 0.6309573444801932
+ 0.6918309709189364
+ 0.7585775750291838
 ```
 """
 function Mag2Lin(extcnt)
@@ -165,6 +202,10 @@ end
 
 """
 ReadData(fname)
+
+#Arguments
+
+- `fname` is the file nama of a given extinction table.
 
 Returns data for an atmospheric extinction currently supported by the package.
 
@@ -194,8 +235,8 @@ struct RecipeData
 
 #Arguments
 
-- `table`: table interpolation
-- `lims`: minimum and maximum wavelengths
+- `table`: function giving the table interpolation
+- `lims`: minimum and maximum wavelengths covered by the inout data.
 
 """
 struct RecipeData
