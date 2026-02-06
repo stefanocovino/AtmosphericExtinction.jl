@@ -31,6 +31,7 @@ will install this package, with the latter when the package (if ever) will be re
 
 ```julia
 using AtmosphericExtinction
+using Measurements
 using Unitful
 ```
 
@@ -164,7 +165,7 @@ airmass = 1.3
 outputspectrum = DeExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
 ```
 
-or, viceversa, if the input spectrum is already free of extinction and one wants to simulate how it wuld appear observed at a given airmass:
+or, viceversa, if the input spectrum is already free of extinction and one wants to simulate how it would appear observed at a given airmass:
 
 ```julia
 outputspectrum = ExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
