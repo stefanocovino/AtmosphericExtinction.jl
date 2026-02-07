@@ -52,7 +52,6 @@ Lick
 Mauna Kea
 ```
 
-We plan to add as many site information as possible in the future.
 
 The extinction (magnitude/airmass) for any given available observing site, e.g. La Silla, can be obtained by:
 
@@ -105,7 +104,7 @@ Recipes["La Silla"].lims
  9000.0 Å
  ```
 
-Extrapolation beyond these limits is allowed following a `flat` strategy, i.e., the last value on the lowest and highest wavelnegth value is adopted. This might or might not be acceptable, depending on the specific problem you are addressing.
+Extrapolation beyond these limits is allowed following a `flat` strategy, i.e., the last value on the lowest and highest wavelength value is adopted. This might or might not be acceptable, depending on the specific problem you are addressing.
 
 
 As mentioned above, at present only `Cerro Paranal` data provide ucertainties, e.g.:
@@ -157,7 +156,7 @@ or:
 ExtinctionLimits("Cerro Paranal")
 ```
 
-There are also two function to directly correct and input spectrum, in limear units, for atmospheric extinction or to apply extinction to a theoretical spectrum. E.g., 'dataflux', 'edataflux' and 'datawave' are the input spctrum, the errors and the wavelelngth, respectively:
+There are also two function to directly correct and input spectrum, in limear units, for atmospheric extinction or to apply extinction to a theoretical spectrum. E.g., if 'dataflux', 'edataflux' and 'datawave' are the input spctrum, the errors and the wavelelngth, respectively:
 
 ```julia
 airmass = 1.3
@@ -165,7 +164,7 @@ airmass = 1.3
 outputspectrum = DeExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)
 ```
 
-or, viceversa, if the input spectrum is already free of extinction and one wants to simulate how it would appear observed at a given airmass:
+allows one to compute the spectrum without extinction. Viceversa, if the input spectrum is already free of extinction and one wants to simulate how it would appear observed at a given airmass:
 
 ```julia
 outputspectrum = ExtinctSpectrum("La Silla",inputwave,dataflux,edataflux,airmass)

@@ -27,7 +27,7 @@ export Recipes
 """
 DeExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
 
-#Arguments
+# Arguments
 
 - `recipe` is one of the extinction tables available in the package (i.e., those reported by `GetKnownRecipes()`).
 - `iwave` is the vector of input wavelengths. They can have units (or assumed to be Angstrom).
@@ -63,7 +63,7 @@ end
 """
 ExtinctionLimits(recipe)
 
-#Arguments
+# Arguments
 
 - `recipe` is one of the extcintion tables available in the package (i.e., those reported by `GetKnownRecipes()`).
 
@@ -91,7 +91,7 @@ end
 ExtinctionValues(recipe,waverange)
 
 
-#Arguments
+# Arguments
 
 - `recipe` is one of the extinction tables available in the package (i.e., those reported by `GetKnownRecipes()`).
 - `waverange` is a vector of the wavelengths of interest (in Angstrom).
@@ -120,7 +120,7 @@ end
 """
 ExtinctSpectrum(recipe,iwave,ispec,ierrspec,airmass)
 
-#Arguments
+# Arguments
 
 - `recipe` is one of the extinction tables available in the package (i.e., those reported by `GetKnownRecipes()`).
 - `iwave` is the vector of input wavelengths. They can have units (or assumed to be Angstrom).
@@ -174,7 +174,7 @@ end
 """
 Mag2Lin(excnt)
 
-#Arguments
+# Arguments
 
 - `extcnt` is a vector with extinction values in magnitudes (per airmass, usually).
 
@@ -203,7 +203,7 @@ end
 """
 ReadData(fname)
 
-#Arguments
+# Arguments
 
 - `fname` is the file nama of a given extinction table.
 
@@ -233,7 +233,7 @@ end
 """
 struct RecipeData
 
-#Arguments
+# Fields
 
 - `table`: function giving the table interpolation
 - `lims`: minimum and maximum wavelengths covered by the inout data.
