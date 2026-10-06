@@ -11,17 +11,9 @@ This is a very simple package providing a convenience function to access to atmo
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/stefanocovino/AtmoshpericExtinction.jl.git")
-```
-
-or
-
-```julia
-using Pkg
 Pkg.add("AtmoshpericExtinction")
 ```
 
-will install this package, with the latter when the package (if ever) will be registered.
 
 
 [Here](https://stefanocovino.github.io/AtmosphericExtinction.jl/stable/)'s the documentation!
